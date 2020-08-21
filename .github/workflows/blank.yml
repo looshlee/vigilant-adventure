@@ -2,7 +2,7 @@ name: Steps if conditional bugs
 on: [push, pull_request]
 jobs:
   bug:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-lastest
     steps:
 #       - name: Fail step
 #         run: exit 1

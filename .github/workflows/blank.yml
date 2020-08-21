@@ -2,23 +2,13 @@ name: Steps if conditional bugs
 on: [push, pull_request]
 jobs:
   bug:
-    runs-on: ubuntu-lastest
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-lastest, ubuntu-18.04]
+        node: [6, 8, 10]
     steps:
-#       - name: Fail step
-#         run: exit 1
 
       - name: Upload artifacts (with if true check)
         if: ${{ 0 == 0 }}
         run: echo "zero equals zero ${{ 0 == 0 }}"
-
-      - name: testing with true
-        if: ${{ true }}
-        run: echo "if true is true"
-
-      - name: test
-        if: ${{ 0 == 1 }}
-        run: echo "zero equals 1 "
-        
-      - name: Upload artifacts (with always)
-        if: ${{ always() }}
-        run: echo "Would instead use actions/artifacts!"

@@ -1,4 +1,4 @@
-name: Steps if conditional bug
+name: Steps if conditional bugs
 on: [push, pull_request]
 jobs:
   bug:

@@ -8,8 +8,8 @@ jobs:
         run: exit 1
 
       - name: Upload artifacts (with if true check)
-        if: ${{ true }}
-        run: echo "Would instead use actions/artifacts!"
+        if: ${{ 0 == 0 }}
+        run: echo ${{ 0 == 0 }}
 
       - name: Upload artifacts (with always)
         if: ${{ always() }}

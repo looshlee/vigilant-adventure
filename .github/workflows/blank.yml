@@ -16,7 +16,7 @@ jobs:
         run: echo "if true is true"
 
       - name: test
-        if: $ {{ 0 == 1 }}
+        if: ${{ 0 == 1 }}
         run: echo "zero equals 1 "
         
       - name: Upload artifacts (with always)

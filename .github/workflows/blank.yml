@@ -1,14 +1,12 @@
 name: Steps if conditional bugs
-on: [push, pull_request]
+on: [push]
 jobs:
   bug:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-lastest, ubuntu-18.04]
-        node: [6, 8, 10]
+    runs-on: ubuntu-latest
     steps:
-
-      - name: Upload artifacts (with if true check)
-        if: ${{ 0 == 0 }}
-        run: echo "zero equals zero ${{ 0 == 0 }}"
+      - name: hi
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - run: echo  ${{ toJson(github) }}
+      

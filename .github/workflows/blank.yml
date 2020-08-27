@@ -1,20 +1,19 @@
 name: Steps if conditional bugs
-on: [push]
+
+on: push
 
 jobs:
   bug:
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Github Context
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
+
+      - name: dump github context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-      - run: echo "$GITHUB_CONTEXT"
-      
       - name: Dump job context
         env:
           JOB_CONTEXT: ${{ toJson(job) }}

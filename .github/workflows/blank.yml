@@ -1,10 +1,11 @@
 name: Steps if conditional bugs
 on: [push]
+
 jobs:
   bug:
     runs-on: ubuntu-latest
+
     steps:
-      - name: hi
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0

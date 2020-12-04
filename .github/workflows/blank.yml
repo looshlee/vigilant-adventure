@@ -16,4 +16,4 @@ jobs:
     if: always()
     steps:
       - name: Notify
-        run: echo "Job A failed!" and ${{needs.job_a.result}} and ${needs.job_a.result}
+        run: echo "Job A failed!" 

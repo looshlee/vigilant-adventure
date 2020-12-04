@@ -13,7 +13,7 @@ jobs:
     name: Notify
     runs-on: ubuntu-latest
     needs: job_a
-    if: 0 == 0 
+    if: always()
     steps:
       - name: Notify
         run: echo "Job A failed!" and ${{needs.job_a.result}} and ${needs.job_a.result}

@@ -3,41 +3,17 @@ name: Steps if conditional bugs
 on: push
 
 jobs:
-  bug:
+  job_a:
+    name: Always fail
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v2
-        with:
-          fetch-depth: 0
-
-      - name: dump github context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
-
-      - name: Dump job context
-        env:
-          JOB_CONTEXT: ${{ toJson(job) }}
-        run: echo "$JOB_CONTEXT"
-        
-      - name: Dump steps context
-        env:
-          STEPS_CONTEXT: ${{ toJson(steps) }}
-        run: echo "$STEPS_CONTEXT"
-        
-      - name: Dump runner context
-        env:
-          RUNNER_CONTEXT: ${{ toJson(runner) }}
-        run: echo "$RUNNER_CONTEXT"
-        
-      - name: Dump strategy context
-        env:
-          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
-        run: echo "$STRATEGY_CONTEXT"
-        
-      - name: Dump matrix context
-        env:
-          MATRIX_CONTEXT: ${{ toJson(matrix) }}
-        run: echo "$MATRIX_CONTEXT"
-    
+      - name: Fail
+        run: exit 1
+  job_b:
+    name: Notify
+    runs-on: ubuntu-latest
+    needs: job_a
+    if: needs.job_a.result == 'failure'
+    steps:
+      - name: Notify
+        run: echo "Job A failed!" and ${{needs.job_a.result}} and ${needs.job_a.result}
